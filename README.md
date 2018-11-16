@@ -85,8 +85,17 @@ Please install on your computer:
     * `make up` - starts (and rebuilds if necessary) containers,  installs composer dependencies and loading fixtures.
     * `make down` - stops all related containers and network.
     * `make start` - starts builtin web server on port `8888`.
-       Application URL: [http://localhost:8888](http://localhost:8888).
+       ApiDOC: [http://localhost:8888](http://localhost:8888).
     * `make status` - prints status of builtin web server.
     * `make stop` - stops builtin web server.
 
 
+### test rest endpoints
+* `curl -X GET "http://localhost:8888/artists" -H "accept: application/json"`
+* `curl -X GET "http://localhost:8888/artists/{token}" -H "accept: application/json"`
+* `curl -X GET "http://localhost:8888/albums/{token}" -H "accept: application/json"`
+
+
+### Did not have time finish:
+* `token` instead of `id` in api doc
+*  transformation of seconds in minutes

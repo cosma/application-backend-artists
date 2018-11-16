@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\SongRepository")
  */
 class Song
@@ -26,11 +25,13 @@ class Song
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"album"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"album"})
      */
     private $length;
 

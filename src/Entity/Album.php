@@ -6,9 +6,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"album"}},
+ *     collectionOperations={},
+ *     itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\AlbumRepository")
  */
 class Album
@@ -18,32 +23,38 @@ class Album
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\Column(type="string", unique=true, nullable=false)
      * @ORM\CustomIdGenerator(class="App\ORM\Id\TokenIdGenerator")
+     * @Groups({"artist", "album"})
      */
     private $token;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Artist", inversedBy="albums")
      * @ORM\JoinColumn(name="artist", referencedColumnName="token", nullable=false)
+     * @Groups({"album"})
      */
     private $artist;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"artist", "album"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"artist", "album"})
      */
     private $cover;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"album"})
      */
     private $description;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Song", mappedBy="album", orphanRemoval=true)
+     * @Groups({"album"})
      */
     private $songs;
 
