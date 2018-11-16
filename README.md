@@ -68,3 +68,25 @@ It is up to you on how you want to structure your app. Fulfill the following req
 
 Something not clear, do you need more information to do the test? Have a look at existing issues
 or create a new one in case you didn't see your question yet. Don't be afraid to ask!
+
+
+# My Comments
+
+## Requirements
+Please install on your computer:
+* [Docker](https://docs.docker.com/install/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
+
+## Documentation
+* [API Platform](https://api-platform.com/docs/core) 
+
+## Controlling application
+* `Makefile` in root directory of the project provides following targets:
+    * `make up` - starts (and rebuilds if necessary) containers,  installs composer dependencies and loading fixtures.
+    * `make down` - stops all related containers and network.
+    * `make start` - starts builtin web server on port `8888`.
+       Application URL: [http://localhost:8888](http://localhost:8888).
+    * `make status` - prints status of builtin web server.
+    * `make stop` - stops builtin web server.
+
+

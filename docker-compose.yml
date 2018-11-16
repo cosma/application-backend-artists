@@ -1,0 +1,22 @@
+version: "3"
+services:
+    php:
+        build: docker/
+        volumes:
+            - .:/usr/share/code
+        tty: true
+        environment:
+            DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}
+        ports:
+            - 8888:8888
+    db:
+        image: mariadb:10.2
+        volumes:
+            - "./.data/db:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - 3306:3306

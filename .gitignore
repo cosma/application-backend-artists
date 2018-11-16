@@ -1,4 +1,6 @@
-
+.idea
+.data
+.env
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/
